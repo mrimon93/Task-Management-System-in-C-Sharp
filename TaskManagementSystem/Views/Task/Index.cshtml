@@ -1,4 +1,4 @@
-@model List<Models.Task>
+@model TaskManagementSystem.Models.Task
 
 <table>
     <thead>
@@ -10,13 +10,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var task in Model)
+        @foreach (var subTask in Model.SubTasks)
         {
             <tr>
-                <td>@task.Title</td>
-                <td>@task.Description</td>
-                <td>@task.DueDate.ToShortDateString()</td>
-                <td>@task.Status</td>
+                <td>@subTask.Title</td>
+                <td>@subTask.Description</td>
+                <td>@subTask.DueDate.ToShortDateString()</td>
+                <td>@subTask.Status</td>
             </tr>
         }
     </tbody>
