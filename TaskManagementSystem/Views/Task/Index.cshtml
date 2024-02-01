@@ -1,47 +1,50 @@
-@model TaskManagementSystem.Models.Task
+@model List<TaskManagementSystem.Models.Task>
 
-<h2>Task Details</h2>
+@foreach (var task in Model)
+{
+    <h2>Task Details</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>@Model.Title</td>
-            <td>@Model.Description</td>
-            <td>@Model.DueDate.ToShortDateString()</td>
-            <td>@Model.Status</td>
-        </tr>
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.DueDate.ToShortDateString()</td>
+                <td>@task.Status</td>
+            </tr>
+        </tbody>
+    </table>
 
-<h3>SubTasks</h3>
+    <h3>SubTasks</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Name</th>
-            <!-- Add other headers for SubTask properties -->
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.SubTasks != null)
-        {
-            foreach (var subTask in Model.SubTasks)
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Name</th>
+                <!-- Add other headers for SubTask properties -->
+            </tr>
+        </thead>
+        <tbody>
+            @if (task.SubTasks != null)
             {
-                <tr>
-                    <td>@subTask.Title</td>
-                    <td>@subTask.Name</td>
-                    <!-- Add other cells for SubTask properties  -->
-                </tr>
+                foreach (var subTask in task.SubTasks)
+                {
+                    <tr>
+                        <td>@subTask.Title</td>
+                        <td>@subTask.Name</td>
+                        <!-- Add other cells for SubTask properties -->
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
