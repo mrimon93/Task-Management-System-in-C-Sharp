@@ -1,6 +1,8 @@
 @model TaskManagementSystem.Models.Task
 
-<table>
+<h2>Task Details</h2>
+
+<table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -10,14 +12,36 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var subTask in Model.SubTasks)
+        <tr>
+            <td>@Model.Title</td>
+            <td>@Model.Description</td>
+            <td>@Model.DueDate.ToShortDateString()</td>
+            <td>@Model.Status</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>SubTasks</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Name</th>
+            <!-- Add other headers for SubTask properties -->
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.SubTasks != null)
         {
-            <tr>
-                <td>@subTask.Title</td>
-                <td>@subTask.Description</td>
-                <td>@subTask.DueDate.ToShortDateString()</td>
-                <td>@subTask.Status</td>
-            </tr>
+            foreach (var subTask in Model.SubTasks)
+            {
+                <tr>
+                    <td>@subTask.Title</td>
+                    <td>@subTask.Name</td>
+                    <!-- Add other cells for SubTask properties -->
+                </tr>
+            }
         }
     </tbody>
 </table>
