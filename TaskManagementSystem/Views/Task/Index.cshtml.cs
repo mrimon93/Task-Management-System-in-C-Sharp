@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace TaskManagementSystem.Views.Task
 {
-    public class Index.cshtml : PageModel
+    public class Index : PageModel
     {
-        private readonly ILogger<Index.cshtml> _logger;
+        private readonly ILogger<Index> _logger;
 
-        public Index.cshtml(ILogger<Index.cshtml> logger)
+        public Index(ILogger<Index> logger)
         {
             _logger = logger;
         }
